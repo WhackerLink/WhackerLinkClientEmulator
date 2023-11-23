@@ -1,0 +1,15 @@
+networkUrl: "https://network.com" # Network url
+
+networkJWT: "123ABC1234" # JWT Generated for your network
+
+srcId: "502" # RID
+
+dstId: Main # Channel
+
+controlChannel: "854.9625"
+
+occasionalVoiceTransmission: true # Will send occasional voice requests and releases on a set interval
+
+occasionalTransmissionsOccurance: 5000 # (In milliseconds) How often voice transmissions will be sent
+
+occasionalTransmissionsLength: 3000 # (In milliseconds) How long the transmission will be
