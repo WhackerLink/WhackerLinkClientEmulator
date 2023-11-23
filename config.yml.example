@@ -1,3 +1,5 @@
+bgMode: false # Background mode
+
 networkUrl: "https://network.com" # Network url
 
 networkJWT: "123ABC1234" # JWT Generated for your network

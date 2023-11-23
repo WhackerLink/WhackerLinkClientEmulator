@@ -36,24 +36,27 @@ const configFile = fs.readFileSync(configFilePath, 'utf8');
 const config = yaml.load(configFile);
 
 
-const peerSocket = io("https://whackerlink.com", {
+const peerSocket = io(config.networkUrl, {
     query: { token: config.networkJWT }
 });
 
-readline.emitKeypressEvents(process.stdin);
+if (!config.bgMode){
 
-process.stdin.on('keypress', (ch, key) => {
-//    console.log('got keypress', ch, key);
-    if (key && key.ctrl && key.name == 'c') {
-        process.exit();
-    } else if(key && key.name == 'k') {
-        request_voice_channel();
-    } else if(key && key.name == 'u') {
-        release_voice_channel();
-    }
-});
+    readline.emitKeypressEvents(process.stdin);
 
-process.stdin.setRawMode(true);
+    process.stdin.on('keypress', (ch, key) => {
+        //console.log('got keypress', ch, key);
+        if (key && key.ctrl && key.name == 'c') {
+            process.exit();
+        } else if(key && key.name == 'k') {
+            request_voice_channel();
+        } else if(key && key.name == 'u') {
+            release_voice_channel();
+        }
+    });
+
+    process.stdin.setRawMode(true);
+}
 
 const userStatus = {
     microphone: true,
